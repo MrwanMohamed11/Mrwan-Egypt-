@@ -11,77 +11,100 @@
             --gold: #D4AF37;
             --black: #020202;
             --glass-gold: rgba(212, 175, 55, 0.08);
-            --transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { background-color: var(--black); color: #eee; font-family: 'Cairo', sans-serif; overflow-x: hidden; line-height: 1.9; }
+        body { background-color: var(--black); color: #eee; font-family: 'Cairo', sans-serif; overflow-x: hidden; line-height: 1.6; }
 
+        /* شريط التقدم */
         .progress-container { position: fixed; top: 0; z-index: 10000; width: 100%; height: 4px; background: transparent; }
-        .progress-bar { height: 100%; background: var(--gold); width: 0%; box-shadow: 0 0 25px var(--gold); }
+        .progress-bar { height: 100%; background: var(--gold); width: 0%; box-shadow: 0 0 20px var(--gold); }
 
+        /* الهيدر المتجاوب */
         header {
-            position: fixed; top: 0; width: 100%; padding: 30px 10%;
+            position: fixed; top: 0; width: 100%; padding: 20px 5%;
             display: flex; justify-content: space-between; align-items: center;
             z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
         }
-        .logo { font-family: 'Amiri', serif; font-size: 2.8rem; color: var(--gold); font-weight: bold; }
-        .student-top { color: #888; font-size: 1.1rem; border-right: 2px solid var(--gold); padding-right: 15px; }
-        .student-top b { color: var(--gold); font-weight: 900; }
+        .logo { font-family: 'Amiri', serif; font-size: clamp(1.5rem, 4vw, 2.5rem); color: var(--gold); font-weight: bold; }
+        .student-top { color: #888; font-size: clamp(0.7rem, 2vw, 1rem); border-right: 2px solid var(--gold); padding-right: 10px; }
 
-        section { padding: 180px 12%; position: relative; }
-        .section-tag { color: var(--gold); font-weight: 700; letter-spacing: 8px; display: block; margin-bottom: 30px; font-size: 1rem; opacity: 0.7; }
-        .section-title { font-family: 'Amiri', serif; font-size: clamp(3rem, 8vw, 6.5rem); margin-bottom: 50px; color: #fff; line-height: 1.1; }
+        /* الأقسام */
+        section { padding: clamp(80px, 15vh, 150px) 7%; position: relative; }
+        .section-tag { color: var(--gold); font-weight: 700; letter-spacing: 5px; display: block; margin-bottom: 20px; font-size: 0.9rem; opacity: 0.7; }
+        .section-title { font-family: 'Amiri', serif; font-size: clamp(2.2rem, 7vw, 5rem); margin-bottom: 30px; color: #fff; line-height: 1.2; }
 
+        /* الهيرو */
         .hero {
             height: 100vh; display: flex; flex-direction: column; justify-content: center;
-            align-items: center; text-align: center;
+            align-items: center; text-align: center; padding: 0 5%;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=1920&q=80');
             background-size: cover; background-position: center; background-attachment: fixed;
-            border-bottom: 3px solid var(--gold);
         }
-        .hero h1 { font-family: 'Amiri', serif; font-size: clamp(4rem, 18vw, 12rem); background: linear-gradient(180deg, var(--gold) 30%, #fff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero h1 { 
+            font-family: 'Amiri', serif; font-size: clamp(3.5rem, 15vw, 10rem); 
+            background: linear-gradient(180deg, var(--gold) 30%, #fff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
 
+        /* البارالاكس */
         .parallax-window {
-            height: 90vh; display: flex; align-items: center; justify-content: center;
+            height: 70vh; display: flex; align-items: center; justify-content: center;
             background-size: cover; background-position: center; background-attachment: fixed;
-            position: relative; border-top: 1px solid rgba(212, 175, 55, 0.3); border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative; border-top: 1px solid rgba(212, 175, 55, 0.2);
         }
-        .parallax-window::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
-        
         .tut-bg { background-image: url('https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=1920&q=80'); }
-        .gem-bg { background-image: url('1000074856.jpg'); }
-        .mono-bg { background-image: url('1000074849.jpg'); }
+        .gem-bg { background-image: url('https://images.unsplash.com/photo-1572252009286-268acec5ca0a?auto=format&fit=crop&w=1920&q=80'); }
+        .mono-bg { background-image: url('https://images.unsplash.com/photo-1473830394358-91588751b241?auto=format&fit=crop&w=1920&q=80'); }
 
-        .floating-box { position: relative; z-index: 10; background: rgba(0, 0, 0, 0.85); padding: 80px; border: 1px solid var(--gold); max-width: 900px; backdrop-filter: blur(20px); text-align: center; }
-        .floating-box h3 { font-family: 'Amiri', serif; font-size: 3.5rem; color: var(--gold); margin-bottom: 25px; }
+        .floating-box { 
+            position: relative; z-index: 10; background: rgba(0, 0, 0, 0.85); 
+            padding: clamp(30px, 5vw, 60px); border: 1px solid var(--gold); 
+            width: 90%; max-width: 800px; text-align: center; 
+        }
+        .floating-box h3 { font-family: 'Amiri', serif; font-size: clamp(1.8rem, 4vw, 3rem); color: var(--gold); margin-bottom: 15px; }
 
-        .content-block p { font-size: 1.45rem; color: #ccc; text-align: justify; margin-bottom: 30px; }
-        .highlight { color: var(--gold); font-weight: 700; }
+        .content-block p { font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: #ccc; text-align: justify; margin-bottom: 25px; }
 
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; margin-top: 80px; }
-        .feature-card { padding: 60px; background: var(--glass-gold); border: 1px solid rgba(212, 175, 55, 0.1); transition: var(--transition); }
-        .feature-card:hover { transform: translateY(-20px); border-color: var(--gold); }
-        .feature-card i { font-size: 4rem; color: var(--gold); margin-bottom: 30px; display: block; }
-        .feature-card h4 { font-size: 2.2rem; color: #fff; margin-bottom: 20px; font-family: 'Amiri'; }
+        /* الجريد المتجاوب */
+        .feature-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px; margin-top: 50px; 
+        }
+        .feature-card { padding: 40px; background: var(--glass-gold); border: 1px solid rgba(212, 175, 55, 0.1); transition: var(--transition); }
+        .feature-card:hover { transform: translateY(-10px); border-color: var(--gold); }
+        .feature-card i { font-size: 3rem; color: var(--gold); margin-bottom: 20px; display: block; }
 
-        .stats-strip { display: flex; justify-content: space-around; background: var(--gold); color: #000; padding: 100px 5%; margin: 50px 0; }
-        .stat-item h2 { font-size: 6rem; font-family: 'Amiri'; font-weight: 900; }
+        /* العدادات */
+        .stats-strip { 
+            display: flex; flex-wrap: wrap; justify-content: space-around; 
+            background: var(--gold); color: #000; padding: 60px 5%; gap: 30px;
+        }
+        .stat-item { flex: 1; min-width: 200px; text-align: center; }
+        .stat-item h2 { font-size: clamp(3rem, 8vw, 5rem); font-family: 'Amiri'; }
 
-        .final-info-container { padding: 150px 10%; background: #000; }
-        .info-rect { border: 2px solid var(--gold); padding: 80px; text-align: center; background: rgba(212, 175, 55, 0.03); position: relative; }
-        .info-rect::after { content: "✦"; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #000; color: var(--gold); padding: 0 20px; font-size: 1.5rem; }
-        .info-rect p { font-size: 2rem; margin-bottom: 20px; color: #fff; }
-        .info-rect p b { color: var(--gold); font-weight: 900; }
+        /* المربع الختامي ريسبونسيف */
+        .info-rect { 
+            border: 2px solid var(--gold); padding: clamp(30px, 8vw, 70px); 
+            text-align: center; background: rgba(212, 175, 55, 0.03); 
+        }
+        .info-rect p { font-size: clamp(1.1rem, 3vw, 1.8rem); margin-bottom: 15px; }
         
-        .supervisor-info { margin-top: 50px; padding-top: 40px; border-top: 1px solid rgba(212, 175, 55, 0.2); font-size: 1.5rem; color: #aaa; }
-
-        footer { padding: 100px 10%; text-align: center; border-top: 1px solid #222; }
-        .footer-logo { font-family: 'Amiri', serif; font-size: 5rem; color: var(--gold); opacity: 0.4; }
-
-        .reveal { opacity: 0; transform: translateY(80px); transition: var(--transition); }
+        /* أنيميشن الظهور */
+        .reveal { opacity: 0; transform: translateY(40px); transition: var(--transition); }
         .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* تعديلات الموبايل الصغير جداً */
+        @media (max-width: 480px) {
+            header { padding: 15px 3%; }
+            .hero p { letter-spacing: 5px !important; }
+            section { padding: 60px 5%; }
+            .parallax-window { height: 50vh; background-attachment: scroll; } /* البارالاكس بيبقى تقيل ع الموبايل فبنخليه سكرول عادي */
+        }
     </style>
 </head>
 <body>
@@ -90,20 +113,19 @@
 
     <header>
         <div class="logo">مصر: الملحمة</div>
-        <div class="student-top">إعداد الطالب: <b>مروان محمد فتحي</b></div>
+        <div class="student-top">إعداد الطالب: <b>مروان فتحي</b></div>
     </header>
 
     <section class="hero">
         <h1 class="reveal">أرض الخـلود</h1>
-        <p class="reveal" style="color: #fff; letter-spacing: 10px; font-weight: 200;">7000 عام من الحضارة.. ومستقبل يُبنى</p>
+        <p class="reveal" style="color: #fff; letter-spacing: clamp(5px, 2vw, 10px); font-weight: 200;">7000 عام من الحضارة.. ومستقبل يُبنى</p>
     </section>
 
     <section>
         <span class="section-tag reveal">I. الجذور العميقة</span>
         <h2 class="section-title reveal">أول حضارة عرفها التاريخ</h2>
         <div class="content-block reveal">
-            <p>على ضفاف النيل العظيم، لم يكن المصريون يبنون بيوتاً، بل كانوا يطوعون الأبدية. <span class="highlight">7000 عام</span> من السيادة بدأت بتوحيد القطرين، حيث أدرك المصري القديم أن القوة في الوحدة.</p>
-            <p>من الأهرامات التي تتحدى الجاذبية والزمن، إلى المعابد التي تحكي قصص الملوك والآلهة، ظلت مصر دائماً هي الأصل والمنبع لكل العلوم والآداب، مسجلةً بزوغ فجر التاريخ الإنساني.</p>
+            <p>على ضفاف النيل العظيم، لم يكن المصريون يبنون بيوتاً، بل كانوا يطوعون الأبدية. <span style="color:var(--gold); font-weight:bold;">7000 عام</span> من السيادة بدأت بتوحيد القطرين.</p>
         </div>
         <div class="feature-grid reveal">
             <div class="feature-card"><i class="fas fa-microscope"></i><h4>العبقرية العلمية</h4><p>أسرار لم تكتشف كاملة حتى اليوم في الطب والهندسة والفلك.</p></div>
@@ -114,7 +136,7 @@
     <div class="parallax-window tut-bg">
         <div class="floating-box reveal">
             <h3>الملك الذهبي</h3>
-            <p>توت عنخ آمون؛ الصبي الذي سحر العالم بكنوزه، والملك الذي أثبت أن الفن المصري قد وصل للكمال التقني والجمالي قبل آلاف السنين.</p>
+            <p>توت عنخ آمون؛ الصبي الذي سحر العالم بكنوزه وبراعته الفنية.</p>
         </div>
     </div>
 
@@ -122,14 +144,14 @@
         <span class="section-tag reveal">II. الصرح الثقافي</span>
         <h2 class="section-title reveal">المتحف المصري الكبير</h2>
         <div class="content-block reveal">
-            <p>نحن لا نحتفظ بالآثار، نحن نمنحها حياة جديدة. <span class="highlight">المتحف المصري الكبير (GEM)</span> هو لقاء مهيب بين الأهرامات الخالدة وأحدث تقنيات العرض العالمي.</p>
+            <p>المتحف المصري الكبير (GEM) هو لقاء مهيب بين الأهرامات الخالدة وأحدث تقنيات العرض العالمي.</p>
         </div>
     </section>
 
     <div class="parallax-window gem-bg">
         <div class="floating-box reveal">
             <h3>بيت الحضارة</h3>
-            <p>أيقونة معمارية عالمية تحتضن 100 ألف قطعة أثرية لتروي قصة المجد المصري للأجيال القادمة.</p>
+            <p>أيقونة معمارية عالمية تروي قصة المجد المصري للأجيال القادمة.</p>
         </div>
     </div>
 
@@ -137,49 +159,42 @@
         <span class="section-tag reveal">III. العبور الجديد</span>
         <h2 class="section-title reveal">المونوريل والجمهورية</h2>
         <div class="content-block reveal">
-            <p>مصر اليوم تسابق الزمن بخطى ثابتة. <span class="highlight">المونوريل</span> هو أطول خط قطار معلق في العالم، يعتمد على أنظمة تحكم رقمية فائقة الدقة ليربط التاريخ بالمستقبل العمراني المتطور.</p>
-            <p>يمثل هذا المشروع طفرة في تكنولوجيا النقل الذكي والنظيف، حيث يهدف إلى توفير وسيلة انتقال حضارية تليق بمكانة الجمهورية الجديدة وتختصر المسافات بين أقطاب التنمية.</p>
+            <p>المونوريل هو أطول خط قطار معلق في العالم، يعتمد على تكنولوجيا النقل الذكي ليربط التاريخ بالمستقبل.</p>
         </div>
     </section>
 
     <div class="parallax-window mono-bg">
         <div class="floating-box reveal">
             <h3>شرايين الأمل</h3>
-            <p>المونوريل المصري؛ تحفة هندسية معلقة تعكس قدرة المصريين على البناء والتطوير وفق أعلى المعايير العالمية.</p>
+            <p>تحفة هندسية معلقة تعكس قدرة المصريين على البناء والتطوير العالمي.</p>
         </div>
     </div>
 
     <div class="stats-strip reveal">
-        <div class="stat-item"><h2 class="counter" data-target="7000">0</h2><p>سنة سيادة</p></div>
-        <div class="stat-item"><h2 class="counter" data-target="100000">0</h2><p>أثر عالمي</p></div>
-        <div class="stat-item"><h2 class="counter" data-target="1">0</h2><p>تحيا مصر</p></div>
+        <div class="stat-item"><h2 class="counter" data-target="7000">0</h2><p>سنة حضارة</p></div>
+        <div class="stat-item"><h2 class="counter" data-target="100">0</h2><p>ألف أثر</p></div>
     </div>
 
-    <section class="final-info-container">
+    <section>
         <div class="info-rect reveal">
             <p>إعداد الطالب: <b>مروان محمد فتحي أحمد</b></p>
             <p>الصف: <b>الأول الثانوي</b></p>
-            <p>المدرسة: <b>السعيدية الثانوية العسكرية بنين</b></p>
-            
-            <div class="supervisor-info">
-                تحت إشراف الأستاذة: <b>مي صلاح</b><br>
-                <small>مسؤول قسم الموهوبين</small>
+            <p style="font-size: 0.9em; opacity: 0.7;">السعيدية الثانوية العسكرية بنين</p>
+            <div style="margin-top: 30px; border-top: 1px solid rgba(212,175,55,0.2); padding-top: 20px;">
+                تحت إشراف الأستاذة: <b>مي صلاح</b>
             </div>
-            
-            <div style="margin-top: 40px; color: var(--gold); font-weight: bold;">2025 - 2026</div>
         </div>
     </section>
 
-    <footer>
-        <div class="footer-logo">مـــصــر</div>
+    <footer style="padding: 40px; text-align: center; opacity: 0.5;">
+        <p>© 2026 مروان محمد - ملحمة الأبدية</p>
     </footer>
 
     <script>
         window.onscroll = function() {
             var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            var scrolled = (winScroll / height) * 100;
-            document.getElementById("myBar").style.width = scrolled + "%";
+            document.getElementById("myBar").style.width = (winScroll / height) * 100 + "%";
             reveal();
         };
 
@@ -190,23 +205,23 @@
                 var elementTop = reveals[i].getBoundingClientRect().top;
                 if (elementTop < windowHeight - 100) {
                     reveals[i].classList.add("active");
-                    if(reveals[i].classList.contains('stats-strip')) startCounters();
+                    if(reveals[i].querySelector('.counter')) startCounters(reveals[i]);
                 }
             }
         }
 
-        function startCounters() {
-            const counters = document.querySelectorAll('.counter');
+        function startCounters(container) {
+            const counters = container.querySelectorAll('.counter');
             counters.forEach(counter => {
                 if(counter.innerText !== "0") return;
                 const target = +counter.getAttribute('data-target');
                 let count = 0;
                 const update = () => {
                     if(count < target) {
-                        count += Math.ceil(target / 100);
-                        counter.innerText = count.toLocaleString();
-                        setTimeout(update, 20);
-                    } else { counter.innerText = target.toLocaleString(); }
+                        count += Math.ceil(target / 50);
+                        counter.innerText = count > target ? target : count;
+                        setTimeout(update, 30);
+                    }
                 };
                 update();
             });
